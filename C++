@@ -77,3 +77,33 @@ int main(){
 							s.pop();
 						}
 				}
+			if (o[i] == '+' || o[i] == '-' || o[i] == '*' || o[i] == '/'){
+				if (s.IsEmpty() == 1 || s.Top() == '('){
+					s.push (o[i]);
+			}
+		
+				else{
+					while (s.IsEmpty() != 1 && s.Top() != '(' && prakondisi(o[i]) <= prakondisi(s.Top())){
+						char k = s.Top();
+						s.pop();
+					pf+=k;
+			}
+				s.push (o[i]);
+			}	
+		}
+	}
+	while (s.IsEmpty() != 1){
+			char k = s.Top();
+			s.pop();
+			pf+=k;
+	}
+	
+	cout<<" Postfix : "<<pf<<endl;
+	
+	for (int i=0; i<=banyak; i++){
+	if (pf[i] >= '0' && pf[i] <= '9'){
+			s.push(pf[i]);
+	}
+	if (pf[i] == '+' || pf[i] == '-' || pf[i] == '*' || pf[i] == '/'){
+		int A = s.Top()-'0';
+		s.pop();
