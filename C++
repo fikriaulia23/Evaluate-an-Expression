@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+#define Size_Max 1024
+
+	class stack{
+		char A[Size_Max];
+		char top;
+	public:
+		stack(){
+			top = -1;
+		}
+	
+	void push(char n){
+		if (top == Size_Max-1){
+			cout<<" Array Berlebih "<<endl;
+			return;
+		}
+		A[++top]=n;
+	}
+	
+	void pop(){
+		if (top == -1){
+			cout<<" Element tidak bisa diPOP "<<endl;
+			return;
+		}
+			else top--;
+	}
