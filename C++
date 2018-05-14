@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <math.h>
 
 using namespace std;
 #define Size_Max 1024
@@ -27,3 +28,52 @@ using namespace std;
 		}
 			else top--;
 	}
+
+	int Top(){
+		return A[top];
+	}
+
+	bool IsEmpty(){				// ketika kosong
+		if (top <0 ){
+			return 1;
+		}
+			else {
+				return 0;
+			}
+	}
+};
+
+
+	int prakondisi (char k){			// pertimbangan susunan operasi yang harus dahulu dilakukan
+    	if (k == '*' || k == '/')
+    	return 2;
+    	else if (k == '+' || k == '-')
+    	return 1;
+    	else
+    	return -1;
+	}
+
+int main(){
+	stack s;
+	int banyak, nilai;
+	string o,pf;
+	getline(cin, o);
+	banyak = o.length();
+
+	for(int i=0; i<=banyak; i++){
+		if (o[i] >= '0' && o[i] <= '9'){
+			pf+=o[i];
+		}
+			else if (o[i] ==  '('){
+				s.push(o[i]);
+			}
+				else if (o[i] == ')'){
+					while (s.IsEmpty() != 1 && s.Top() != '('){
+					char k = s.Top();
+					s.pop();
+				pf+=k;
+					}
+						if (s.Top() == '('){
+							s.pop();
+						}
+				}
