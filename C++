@@ -107,3 +107,38 @@ int main(){
 	if (pf[i] == '+' || pf[i] == '-' || pf[i] == '*' || pf[i] == '/'){
 		int A = s.Top()-'0';
 		s.pop();
+		
+		int B = s.Top()-'0';
+		s.pop();
+	
+		if (pf[i] == '+'){
+			nilai = B+A;
+			char tmpnilai = nilai+'0';
+			s.push(tmpnilai);
+		}
+			else if (pf[i] == '-'){
+				nilai = B-A;
+				char tmpnilai = nilai+'0';
+				s.push(tmpnilai);
+			
+			}
+				else if (pf[i] == '*'){
+					nilai = B*A;
+					char tmpnilai = nilai+'0';
+					s.push(tmpnilai);
+				}
+					else if (pf[i] == '/'){
+						nilai = B/A;
+						char tmpnilai = nilai+'0';
+						s.push(tmpnilai);
+					}
+		
+	}
+
+	}
+	char NilaiAkhir = s.Top();
+	int Nilai = NilaiAkhir-'0';			//pembulatan ke-bawah
+	cout<<" Akhir : "<<Nilai<<endl;
+	
+}
+
